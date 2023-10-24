@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<script src="https://cdn.tailwindcss.com"></script>
+<body style="display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0; background-color: rgb(4, 57, 27)">
+    <div class="calculator">
+        <input type="text" id="display" disabled style="background: #f2f2f2;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 20px;
+        margin-bottom: 10px;
+        width: 300px;
+        text-align: right;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);">
+        <div class="buttons" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px">
+            <button onclick="clearDisplay()" class="rounded-none p-2.5 text-lg bg-cyan-600 text-white hover:text-red-300">C</button>
+            <button onclick="appendToDisplay('7')" class="rounded-none p-2.5 text-lg bg-yellow-400 text-black hover:text-green-300">7</button>
+            <button onclick="appendToDisplay('8')" class="rounded-none p-2.5 text-lg bg-yellow-400 text-black hover:text-green-300">8</button>
+            <button onclick="appendToDisplay('9')" class="rounded-none p-2.5 text-lg bg-yellow-400 text-black hover:text-green-300">9</button>
+            <button onclick="appendToDisplay('+')"class="rounded-none p-2.5 text-lg bg-yellow-400 text-black hover:text-green-300">+</button>
+            <button onclick="appendToDisplay('4')" class="rounded-none p-2.5 text-lg bg-yellow-400 text-black hover:text-green-300">4</button>
+            <button onclick="appendToDisplay('5')" class="rounded-none p-2.5 text-lg bg-yellow-400 text-black hover:text-green-300">5</button>
+            <button onclick="appendToDisplay('6')" class="rounded-none p-2.5 text-lg bg-yellow-400 text-black hover:text-green-300">6</button>
+            <button onclick="appendToDisplay('-')" class="rounded-none p-2.5 text-lg bg-yellow-400 text-black hover:text-green-300">-</button>
+            <button onclick="appendToDisplay('1')" class="rounded-none p-2.5 text-lg bg-yellow-400 text-black hover:text-green-300">1</button>
+            <button onclick="appendToDisplay('2')" class="rounded-none p-2.5 text-lg bg-yellow-400 text-black hover:text-green-300">2</button>
+            <button onclick="appendToDisplay('3')" class="rounded-none p-2.5 text-lg bg-yellow-400 text-black hover:text-green-300">3</button>
+            <button onclick="appendToDisplay('*')" class="rounded-none p-2.5 text-lg bg-yellow-400 text-black hover:text-green-300">*</button>
+            <button onclick="appendToDisplay('0')" class="rounded-none p-2.5 text-lg bg-yellow-400 text-black hover:text-green-300">0</button>
+            <button onclick="appendToDisplay('.')" class="rounded-none p-2.5 text-lg bg-yellow-400 text-black hover:text-green-300">.</button>
+            <button onclick="calculate()" class="rounded-none p-2.5 text-lg bg-yellow-400 text-black hover:text-green-300">=</button>
+            <button onclick="appendToDisplay('/')" class="rounded-none p-2.5 text-lg bg-yellow-400 text-black hover:text-green-300">/</button>
+        </div>
+    </div>
+
+    <script>
+        let displayValue = '';
+
+        function appendToDisplay(value) {
+            displayValue += value;
+            document.getElementById('display').value = displayValue;
+        }
+
+        function clearDisplay() {
+            displayValue = '';
+            document.getElementById('display').value = '';
+        }
+
+        function calculate() {
+            try {
+                displayValue = eval(displayValue);
+                document.getElementById('display').value = displayValue;
+            } catch (error) {
+                document.getElementById('display').value = 'Error';
+            }
+        }
+
+    </script>
+</body>
+
+</html>
